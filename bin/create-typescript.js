@@ -10,8 +10,6 @@ import { installEslint } from "../lib/install-eslint.js";
 import { installPrettier } from "../lib/install-prettier.js";
 import { installVitest } from "../lib/install-vitest.js";
 
-console.log(process.argv);
-
 const basePath = fileURLToPath(import.meta.url);
 const starterFilesPath = resolve(basePath, "..", "..", "starter-files");
 
