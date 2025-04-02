@@ -5,5 +5,5 @@ Generate a TypeScript project with npm init
 ## Usage
 
 ```
-npm init github:natesilva/npm-init-typescript
+npm init github:natesilva/typescript
 ```
