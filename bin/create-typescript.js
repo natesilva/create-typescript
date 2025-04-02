@@ -5,13 +5,10 @@ import { fileURLToPath } from "node:url";
 import yoctoSpinner from "yocto-spinner";
 import { createReadme } from "../lib/create-readme.js";
 import { initializeProject } from "../lib/initialize-project.js";
-import { installDevDependencies } from "../lib/install-dev-dependencies.js";
 import { installEslint } from "../lib/install-eslint.js";
 import { installPrettier } from "../lib/install-prettier.js";
+import { installTypeScript } from "../lib/install-type-script.js";
 import { installVitest } from "../lib/install-vitest.js";
-
-const basePath = fileURLToPath(import.meta.url);
-const starterFilesPath = resolve(basePath, "..", "..", "starter-files");
 
 const cli = meow(
   `
@@ -49,16 +46,19 @@ const cli = meow(
 );
 
 const spinner = yoctoSpinner().start();
+
+const basePath = fileURLToPath(import.meta.url);
+const starterFilesPath = resolve(basePath, "..", "..", "starter-files");
 const options = { starterFilesPath };
 
-spinner.text = "Initializing TypeScript project…";
+spinner.text = "Initializing project…";
 await initializeProject(options);
 
 spinner.text = "Creating README.md…";
-await createReadme();
+await createReadme(options);
 
-spinner.text = "Installing dev dependencies…";
-await installDevDependencies(options);
+spinner.text = "Installing TypeScript dev dependencies…";
+await installTypeScript(options);
 
 if (cli.flags.all || cli.flags.vitest) {
   spinner.text = "Installing Vitest…";
