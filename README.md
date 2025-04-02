@@ -11,6 +11,12 @@ Generate a TypeScript project with npm init
 npm init github:natesilva/typescript
 ```
 
+### Don’t prompt for confirmation
+
+```
+npm init -y github:natesilva/typescript
+```
+
 ### Install all optional features
 
 ```
