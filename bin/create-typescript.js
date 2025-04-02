@@ -99,7 +99,13 @@ if (cli.flags.eslint) {
   spinner.text = "Installing ESLint...";
   await $`npm i -D eslint @eslint/js typescript typescript-eslint`;
 
-  const starterFilePath = resolve(basePath, "..", "starter-files", "eslint.config.mjs");
+  const starterFilePath = resolve(
+    basePath,
+    "..",
+    "..",
+    "starter-files",
+    "eslint.config.mjs",
+  );
 
   await pipeline(
     createReadStream(starterFilePath),
