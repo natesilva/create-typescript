@@ -13,6 +13,7 @@
     "create-typescript": "./bin/create-typescript.js"
   },
   "dependencies": {
+    "copy-file": "^11.0.0",
     "execa": "^9.5.2",
     "meow": "^13.2.0",
     "yocto-spinner": "^0.2.1"
