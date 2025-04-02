@@ -26,7 +26,7 @@ const devDependencies = [
   `@types/node${nodeMajorVersion ? `@${nodeMajorVersion}` : ""}`,
 ];
 
-await $`npm i -D typescript ${devDependencies}`;
+await $`npm i -D ${devDependencies}`;
 
 const tsconfig = {
   extends: "@tsconfig/node-lts/tsconfig.json",
