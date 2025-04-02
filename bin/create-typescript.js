@@ -3,6 +3,7 @@ import meow from "meow";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import yoctoSpinner from "yocto-spinner";
+import { createReadme } from "../lib/create-readme.js";
 import { initializeProject } from "../lib/initialize-project.js";
 import { installDevDependencies } from "../lib/install-dev-dependencies.js";
 import { installEslint } from "../lib/install-eslint.js";
@@ -52,6 +53,9 @@ const options = { starterFilesPath };
 
 spinner.text = "Initializing TypeScript project…";
 await initializeProject(options);
+
+spinner.text = "Creating README.md…";
+await createReadme();
 
 spinner.text = "Installing dev dependencies…";
 await installDevDependencies(options);
