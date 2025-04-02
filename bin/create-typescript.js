@@ -16,7 +16,6 @@ try {
   const match = voltaOutput.match(/runtime node@(\d+)\.\d+\.\d+\s+\(current @/);
   nodeMajorVersion = match ? parseInt(match[1], 10) : undefined;
 } catch (error) {
-  console.error(error);
   // this just means that the volta command is not installed
 }
 
