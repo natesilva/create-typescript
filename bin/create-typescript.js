@@ -12,10 +12,11 @@ let nodeMajorVersion = undefined;
 try {
   await $`volta pin node@lts`;
   // get the version number that was pinned
-  const { stdout } = await $`volta list --current node`.pipe`grep current`;
-  const pinnedNodeVersion = stdout.match(/node@([\d.]+)/)?.[1];
-  nodeMajorVersion = pinnedNodeVersion.split(".").map(Number)[0];
+  const { stdout: voltaOutput } = await $`volta list --current node --format plain`;
+  const match = voltaOutput.match(/runtime node@(\d+)\.\d+\.\d+\s+\(current @/);
+  nodeMajorVersion = match ? parseInt(match[1], 10) : undefined;
 } catch (error) {
+  console.error(error);
   // this just means that the volta command is not installed
 }
 

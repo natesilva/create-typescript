@@ -10,7 +10,7 @@
   "license": "ISC",
   "type": "module",
   "bin": {
-    "npm-init-typescript": "./bin/npm-init-typescript.js"
+    "create-typescript": "./bin/create-typescript.js"
   },
   "dependencies": {
     "execa": "^9.5.2"
