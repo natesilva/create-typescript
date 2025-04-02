@@ -5,6 +5,10 @@ import { writeFile } from "node:fs/promises";
 import yoctoSpinner from "yocto-spinner";
 import { createReadStream, createWriteStream } from "node:fs";
 import { pipeline } from "node:stream/promises";
+import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
+
+const basePath = fileURLToPath(import.meta.url);
 
 const cli = meow(
   `
@@ -95,8 +99,10 @@ if (cli.flags.eslint) {
   spinner.text = "Installing ESLint...";
   await $`npm i -D eslint @eslint/js typescript typescript-eslint`;
 
+  const starterFilePath = resolve(basePath, "..", "starter-files", "eslint.config.mjs");
+
   await pipeline(
-    createReadStream("../starter-files/eslint.config.mjs"),
+    createReadStream(starterFilePath),
     createWriteStream("eslint.config.mjs"),
   );
 
