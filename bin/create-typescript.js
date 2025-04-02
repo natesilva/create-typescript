@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import { $ } from "execa";
 import { writeFile } from "node:fs/promises";
-import { createWriteStream } from "node:fs";
 
 await $`npm init -y`;
 await $`npm pkg set type=module`;
