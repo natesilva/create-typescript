@@ -26,9 +26,3 @@ To see available optional features:
 ```
 npm init github:natesilva/typescript -- --help
 ```
-
-### To install with optional features
-
-```
-npm init github:natesilva/typescript -- --eslint
-```
