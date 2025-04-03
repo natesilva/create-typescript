@@ -1,5 +1,5 @@
 {
-  "name": "npm-init-typescript",
+  "name": "create-typescript",
   "version": "1.0.0",
   "description": "Generate a TypeScript project with npm init",
   "scripts": {
