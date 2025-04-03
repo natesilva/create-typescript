@@ -13,7 +13,7 @@ import { installVitest } from "../lib/install-vitest.js";
 const cli = meow(
   `
   Usage
-    $ create-typescript [options]
+    $ create-typescript
 
   Options
     --help      Show this help message
@@ -42,26 +42,8 @@ const cli = meow(
         default: false,
       },
     },
-    allowUnknownFlags: true,
-    inferType: true,
-  }
+  },
 );
-
-// Process npm init arguments
-// When used as `npm init typescript-app --all`,
-// npm passes `--all` as a positional argument, not a flag
-// We need to check for these and convert them to flags
-if (cli.input.length > 0) {
-  for (const arg of cli.input) {
-    if (arg.startsWith("--")) {
-      // Convert positional args that look like flags to actual flags
-      const flagName = arg.slice(2); // Remove the '--'
-      if (flagName in cli.flags) {
-        cli.flags[flagName] = true;
-      }
-    }
-  }
-}
 
 const spinner = yoctoSpinner().start();
 
