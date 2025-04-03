@@ -4,7 +4,6 @@ Generate a TypeScript project with npm init
 
 ## Usage
 
-
 ### Basic Usage
 
 ```
@@ -20,7 +19,7 @@ npm init -y github:natesilva/typescript
 ### Install all optional features
 
 ```
-npm init github:natesilva/typescript -- --all
+npm init github:natesilva/typescript --all
 ```
 
 Installs with all optional features: vitest, eslint and prettier
@@ -30,5 +29,7 @@ Installs with all optional features: vitest, eslint and prettier
 To see available optional features:
 
 ```
-npm init github:natesilva/typescript -- --help
+npm init github:natesilva/typescript --help
 ```
+
+Note: The `--` separator is no longer required when passing flags to the script.
