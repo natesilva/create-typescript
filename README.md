@@ -1,9 +1,8 @@
-# npm-init-typescript
+# create-typescript
 
 Generate a TypeScript project with npm init
 
 ## Usage
-
 
 ### Basic Usage
 
