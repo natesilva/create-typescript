@@ -13,7 +13,6 @@
     "create-typescript": "./bin/create-typescript.js"
   },
   "dependencies": {
-    "copy-file": "^11.0.0",
     "execa": "^9.5.2",
     "humanize-string": "^3.0.0",
     "meow": "^13.2.0",
