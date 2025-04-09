@@ -1,55 +1,33 @@
-# Create-Typescript
+# create-typescript
 
-A CLI tool to generate TypeScript projects quickly.
-
-## Installation
-
-```bash
-npm install -g create-typescript
-```
+Generate a TypeScript project with npm init
 
 ## Usage
 
-```bash
-create-typescript <project-name>
+### Basic Usage
+
+```
+npm init github:natesilva/typescript
 ```
 
-Options:
+### Don’t prompt for confirmation
 
-- `--template`: Choose a template (default: basic)
-- `--fields`: Comma-separated list of fields to include in package.json (default: name,version,description,main,scripts,test,jest,cypress)
+```
+npm init -y github:natesilva/typescript
+```
 
-## Features
+### Install all optional features
 
-1. Quick project initialization
-2. TypeScript support out of the box
-3. Configures ESLint and Prettier
-4. Includes VS Code configurations
+```
+npm init github:natesilva/typescript -- --all
+```
 
-## Templates
+Installs with all optional features: vitest, eslint and prettier
 
-### Basic Template
+### Select optional features
 
-- Minimal setup with essential dependencies
+To see available optional features:
 
-### Full Template
-
-- Includes additional development tools and testing frameworks
-
-## Scripts
-
-- `npm run dev`: Runs the development server
-- `npm run format`: Formats all TypeScript files using Prettier
-- `npm run lint`: Lints all TypeScript files using ESLint
-
-## Contributing
-
-1. Fork this repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-ISC License
+```
+npm init github:natesilva/typescript -- --help
+```
