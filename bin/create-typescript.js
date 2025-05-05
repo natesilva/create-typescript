@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import yoctoSpinner from "yocto-spinner";
 import { createReadme } from "../lib/create-readme.js";
+import { enableDecorators } from "../lib/enable-decorators.js";
 import { initializeProject } from "../lib/initialize-project.js";
 import { installEslint } from "../lib/install-eslint.js";
 import { installPrettier } from "../lib/install-prettier.js";
@@ -16,16 +17,17 @@ const cli = meow(
     $ create-typescript
 
   Options
-    --help      Show this help message
-    --all       Install all recommended dependencies and configure them
-    --vitest    Install vitest and configure it
-    --eslint    Install eslint and configure it
-    --prettier  Install prettier and configure it
+    --help        Show this help message
+    --recommended Install recommended dependencies (vitest, eslint, prettier)
+    --vitest      Install vitest and configure it
+    --eslint      Install eslint and configure it
+    --prettier    Install prettier and configure it
+    --decorators  Enable experimental decorator support in TypeScript
 `,
   {
     importMeta: import.meta,
     flags: {
-      all: {
+      recommended: {
         type: "boolean",
         default: false,
       },
@@ -38,6 +40,10 @@ const cli = meow(
         default: false,
       },
       prettier: {
+        type: "boolean",
+        default: false,
+      },
+      decorators: {
         type: "boolean",
         default: false,
       },
@@ -60,19 +66,24 @@ await createReadme(options);
 spinner.text = "Installing TypeScript dev dependencies…";
 await installTypeScript(options);
 
-if (cli.flags.all || cli.flags.vitest) {
+if (cli.flags.recommended || cli.flags.vitest) {
   spinner.text = "Installing Vitest…";
   await installVitest(options);
 }
 
-if (cli.flags.all || cli.flags.eslint) {
+if (cli.flags.recommended || cli.flags.eslint) {
   spinner.text = "Installing ESLint…";
   await installEslint(options);
 }
 
-if (cli.flags.all || cli.flags.prettier) {
+if (cli.flags.recommended || cli.flags.prettier) {
   spinner.text = "Installing Prettier…";
   await installPrettier(options);
+}
+
+if (cli.flags.decorators) {
+  spinner.text = "Enabling experimental decorator support in TypeScript…";
+  await enableDecorators(options);
 }
 
 spinner.success("Project created successfully!");
