@@ -13,8 +13,6 @@ import { installTypeScript } from "../lib/install-type-script.js";
 import { installVitest } from "../lib/install-vitest.js";
 import { npmCommand, npmOrPnpm } from "../lib/npm-or-pnpm.js";
 
-console.log("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ command is:", npmCommand);
-
 const cli = meow(
   `
   Usage
