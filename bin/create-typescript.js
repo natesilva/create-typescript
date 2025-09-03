@@ -11,6 +11,14 @@ import { installPrettier } from "../lib/install-prettier.js";
 import { installTypeScript } from "../lib/install-type-script.js";
 import { installVitest } from "../lib/install-vitest.js";
 
+console.log([
+  "✨✨✨✨✨✨✨✨",
+  process.env.npm_config_user_agent,
+  process.env.npm_execpath,
+  process.env.PNPM_HOME,
+  "✨✨✨✨✨✨✨✨",
+]);
+
 const cli = meow(
   `
   Usage
