@@ -18,5 +18,10 @@
     "meow": "^13.2.0",
     "titleize": "^4.0.0",
     "yocto-spinner": "^0.2.1"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm"
+    }
   }
 }

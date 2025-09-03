@@ -10,14 +10,7 @@ import { installEslint } from "../lib/install-eslint.js";
 import { installPrettier } from "../lib/install-prettier.js";
 import { installTypeScript } from "../lib/install-type-script.js";
 import { installVitest } from "../lib/install-vitest.js";
-
-console.log([
-  "✨✨✨✨✨✨✨✨",
-  process.env.npm_config_user_agent,
-  process.env.npm_execpath,
-  process.env.PNPM_HOME,
-  "✨✨✨✨✨✨✨✨",
-]);
+import { npmOrPnpm } from "../lib/npm-or-pnpm.js";
 
 const cli = meow(
   `
@@ -31,6 +24,9 @@ const cli = meow(
     --eslint      Install eslint and configure it
     --prettier    Install prettier and configure it
     --decorators  Enable experimental decorator support in TypeScript
+    --block-npm   Add devEngines setting to force use of pnpm and block use of npm
+                  (default: true if pnpm is being used to create the project)
+                  (ignored if pnpm is not being used)
 `,
   {
     importMeta: import.meta,
@@ -54,6 +50,10 @@ const cli = meow(
       decorators: {
         type: "boolean",
         default: false,
+      },
+      blockNpm: {
+        type: "boolean",
+        default: npmOrPnpm() === "pnpm",
       },
     },
   },
@@ -92,6 +92,11 @@ if (cli.flags.recommended || cli.flags.prettier) {
 if (cli.flags.decorators) {
   spinner.text = "Enabling experimental decorator support in TypeScript…";
   await enableDecorators(options);
+}
+
+if (npmOrPnpm() === "pnpm") {
+  spinner.text = "Adding devEngines setting to force use of pnpm…";
+  await addDevEngines(options);
 }
 
 spinner.success("Project created successfully!");
