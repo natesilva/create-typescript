@@ -1,6 +1,6 @@
 # create-typescript
 
-Generate a TypeScript project with npm init
+Generate a TypeScript project with npm init or pnpm
 
 ## Usage
 
