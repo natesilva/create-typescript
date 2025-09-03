@@ -11,7 +11,9 @@ import { installEslint } from "../lib/install-eslint.js";
 import { installPrettier } from "../lib/install-prettier.js";
 import { installTypeScript } from "../lib/install-type-script.js";
 import { installVitest } from "../lib/install-vitest.js";
-import { npmOrPnpm } from "../lib/npm-or-pnpm.js";
+import { npmCommand, npmOrPnpm } from "../lib/npm-or-pnpm.js";
+
+console.log("⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ command is:", npmCommand);
 
 const cli = meow(
   `
@@ -54,7 +56,7 @@ const cli = meow(
       },
       blockNpm: {
         type: "boolean",
-        default: npmOrPnpm() === "pnpm",
+        default: npmCommand === "pnpm",
       },
     },
   },
