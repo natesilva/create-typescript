@@ -6,28 +6,23 @@ Generate a TypeScript project with npm init
 
 ### Basic Usage
 
-```
-npm init github:natesilva/typescript
-```
+- **npm**: `npm init github:natesilva/typescript`
+- **pnpm**: `pnpm dlx github:natesilva/create-typescript`
 
 ### Don’t prompt for confirmation
 
-```
-npm init -y github:natesilva/typescript
-```
+- **npm**: `npm init -y github:natesilva/typescript`
 
-### Install all optional features
+### Install all recommended optional features
 
-```
-npm init github:natesilva/typescript -- --all
-```
+- **npm**: `npm init github:natesilva/typescript -- --recommended`
+- **pnpm**: `pnpm dlx github:natesilva/create-typescript --recommended`
 
-Installs with all optional features: vitest, eslint and prettier
+Installs with recommended features: vitest, eslint and prettier
 
 ### Select optional features
 
-To see available optional features:
+To see available optionas:
 
-```
-npm init github:natesilva/typescript -- --help
-```
+- **npm**: `npm init github:natesilva/typescript -- --help`
+- **pnpm**: `pnpm dlx github:natesilva/create-typescript --help`
