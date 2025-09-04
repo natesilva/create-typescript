@@ -22,7 +22,7 @@ Installs with recommended features: vitest and biome
 
 ### Select optional features
 
-To see available optionas:
+To see available options:
 
 - **npm**: `npm init github:natesilva/typescript -- --help`
 - **pnpm**: `pnpm dlx github:natesilva/create-typescript --help`
