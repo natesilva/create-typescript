@@ -18,7 +18,7 @@ Generate a TypeScript project with npm init or pnpm
 - **npm**: `npm init github:natesilva/typescript -- --recommended`
 - **pnpm**: `pnpm dlx github:natesilva/create-typescript --recommended`
 
-Installs with recommended features: vitest, eslint and prettier
+Installs with recommended features: vitest and biome
 
 ### Select optional features
 

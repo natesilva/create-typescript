@@ -7,8 +7,7 @@ import { addDevEngines } from "../lib/add-dev-engines.js";
 import { createReadme } from "../lib/create-readme.js";
 import { enableDecorators } from "../lib/enable-decorators.js";
 import { initializeProject } from "../lib/initialize-project.js";
-import { installEslint } from "../lib/install-eslint.js";
-import { installPrettier } from "../lib/install-prettier.js";
+import { installBiome } from "../lib/install-biome.js";
 import { installTypeScript } from "../lib/install-type-script.js";
 import { installVitest } from "../lib/install-vitest.js";
 import { npmCommand, npmOrPnpm } from "../lib/npm-or-pnpm.js";
@@ -20,10 +19,9 @@ const cli = meow(
 
   Options
     --help        Show this help message
-    --recommended Install recommended dependencies (vitest, eslint, prettier)
+    --recommended Install recommended dependencies (vitest, biome)
     --vitest      Install vitest and configure it
-    --eslint      Install eslint and configure it
-    --prettier    Install prettier and configure it
+    --biome       Install biome and configure it
     --decorators  Enable experimental decorator support in TypeScript
     --block-npm   Add devEngines setting to force use of pnpm and block use of npm
                   (default: true if pnpm is being used to create the project)
@@ -40,11 +38,7 @@ const cli = meow(
         type: "boolean",
         default: false,
       },
-      eslint: {
-        type: "boolean",
-        default: false,
-      },
-      prettier: {
+      biome: {
         type: "boolean",
         default: false,
       },
@@ -80,14 +74,9 @@ if (cli.flags.recommended || cli.flags.vitest) {
   await installVitest(options);
 }
 
-if (cli.flags.recommended || cli.flags.eslint) {
-  spinner.text = "Installing ESLint…";
-  await installEslint(options);
-}
-
-if (cli.flags.recommended || cli.flags.prettier) {
-  spinner.text = "Installing Prettier…";
-  await installPrettier(options);
+if (cli.flags.recommended || cli.flags.biome) {
+  spinner.text = "Installing Biome…";
+  await installBiome(options);
 }
 
 if (cli.flags.decorators) {
