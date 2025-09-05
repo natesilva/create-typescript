@@ -6,12 +6,8 @@ Generate a TypeScript project with npm init or pnpm
 
 ### Basic Usage
 
-- **npm**: `npm init github:natesilva/typescript`
-- **pnpm**: `pnpm dlx github:natesilva/create-typescript`
-
-### Don’t prompt for confirmation
-
 - **npm**: `npm init -y github:natesilva/typescript`
+- **pnpm**: `pnpm dlx github:natesilva/create-typescript`
 
 ### Install all recommended optional features
 
