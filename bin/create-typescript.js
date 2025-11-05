@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import meow from "meow";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import meow from "meow";
 import yoctoSpinner from "yocto-spinner";
 import { addDevEngines } from "../lib/add-dev-engines.js";
 import { createReadme } from "../lib/create-readme.js";
