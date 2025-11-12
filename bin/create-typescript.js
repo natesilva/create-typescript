@@ -10,7 +10,8 @@ import { initializeProject } from "../lib/initialize-project.js";
 import { installBiome } from "../lib/install-biome.js";
 import { installTypeScript } from "../lib/install-type-script.js";
 import { installVitest } from "../lib/install-vitest.js";
-import { npmCommand, npmOrPnpm } from "../lib/npm-or-pnpm.js";
+import { npmOrPnpm } from "../lib/npm-or-pnpm.js";
+import packageJson from "../package.json" with { type: "json" };
 
 const cli = meow(
   `
@@ -23,9 +24,9 @@ const cli = meow(
     --vitest      Install vitest and configure it
     --biome       Install biome and configure it
     --decorators  Enable experimental decorator support in TypeScript
-    --block-npm   Add devEngines setting to force use of pnpm and block use of npm
-                  (default: true if pnpm is being used to create the project)
-                  (ignored if pnpm is not being used)
+
+  Version
+    ${packageJson.version}
 `,
   {
     importMeta: import.meta,
@@ -45,10 +46,6 @@ const cli = meow(
       decorators: {
         type: "boolean",
         default: false,
-      },
-      blockNpm: {
-        type: "boolean",
-        default: npmCommand === "pnpm",
       },
     },
   },
@@ -85,7 +82,7 @@ if (cli.flags.decorators) {
 }
 
 if (npmOrPnpm() === "pnpm") {
-  spinner.text = "Adding devEngines setting to force use of pnpm…";
+  spinner.text = "Adding devEngines setting for pnpm…";
   await addDevEngines(options);
 }
 
