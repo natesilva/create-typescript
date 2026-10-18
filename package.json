@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "execa": "^10.0.1",
-    "humanize-string": "^3.0.0",
+    "humanize-string": "^4.0.0",
     "meow": "^14.1.0",
     "titleize": "^4.0.0",
     "yocto-spinner": "^1.2.2"
