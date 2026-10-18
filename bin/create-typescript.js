@@ -19,11 +19,12 @@ const cli = meow(
     $ create-typescript
 
   Options
-    --help        Show this help message
-    --recommended Install recommended dependencies (vitest, biome)
-    --vitest      Install vitest and configure it
-    --biome       Install biome and configure it
-    --decorators  Enable experimental decorator support in TypeScript
+    --help          Show this help message
+    --recommended   Install recommended dependencies (vitest, biome)
+    --vitest        Install vitest and configure it
+    --biome         Install biome and configure it
+    --decorators    Enable experimental decorator support in TypeScript
+    --node-version  Pin a Node.js major version (default: latest LTS)
 
   Version
     ${packageJson.version}
@@ -47,6 +48,9 @@ const cli = meow(
         type: "boolean",
         default: false,
       },
+      nodeVersion: {
+        type: "number",
+      },
     },
   },
 );
@@ -58,7 +62,10 @@ const starterFilesPath = resolve(basePath, "..", "..", "starter-files");
 const options = { starterFilesPath };
 
 spinner.text = "Initializing project…";
-await initializeProject(options);
+await initializeProject({
+  starterFilesPath,
+  nodeMajorVersion: cli.flags.nodeVersion,
+});
 
 spinner.text = "Creating README.md…";
 await createReadme(options);
